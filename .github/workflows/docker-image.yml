@@ -30,4 +30,4 @@ jobs:
         echo "docker tag $image_name_tag $new_image"
         docker tag $image_name_tag $new_image
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
-        docker push nginx_uwsgi_nodejs:0.0.1
+        docker push $new_image
