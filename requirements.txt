@@ -4,6 +4,4 @@ djangorestframework_simplejwt==5.3.1
 loguru==0.7.0
 openpyxl==3.1.2
 pandas==2.0.1
-pywin32==306
-userInfo==1.0.0
 django-filter==23.5
