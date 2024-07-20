@@ -7,12 +7,12 @@ ENV UWSGI_INI /myweb/uwsgi.ini
 WORKDIR /myweb
 
 COPY ./requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt \
- && curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - \
  && apt-get -y update \ 
  && apt-get -y upgrade \
  && apt-get -y install nodejs \
- && apt-get clean all 
+ && apt-get clean all \
+ && pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 
 EXPOSE 8080
