@@ -9,7 +9,6 @@ WORKDIR /myweb
 COPY ./requirements.txt /app/requirements.txt
 RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
  && apt-get -y update \ 
- && apt-get -y upgrade \
  && apt-get -y install nodejs \
  && apt-get clean all \
  && pip install --no-cache-dir --upgrade -r /app/requirements.txt
