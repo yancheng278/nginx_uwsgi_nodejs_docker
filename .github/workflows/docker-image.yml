@@ -21,8 +21,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nginx_uwsgi_nodejs:0.0.1
+      run: |
+        image_name_tag="nginx_uwsgi_nodejs:0.0.1"
+        docker build . --file Dockerfile --tag $image_name_tag
     - name: Push Docker Image
       run: |
+        new_image="$ALIYUN_REGISTRY/yancheng278/$image_name_tag"
+        echo "docker tag $image_name_tag $new_image"
+        docker tag $image_name_tag $new_image
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
         docker push nginx_uwsgi_nodejs:0.0.1
