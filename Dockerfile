@@ -7,7 +7,7 @@ ENV UWSGI_INI /myweb/uwsgi.ini
 WORKDIR /myweb
 
 COPY ./requirements.txt /app/requirements.txt
-RUN curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - \
+RUN curl -sSLk https://deb.nodesource.com/setup_current.x | sudo -E bash - \
  && apt-get -y update \ 
  && apt-get -y upgrade \
  && apt-get -y install nodejs \
