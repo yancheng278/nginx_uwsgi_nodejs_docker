@@ -2,9 +2,10 @@ FROM tiangolo/uwsgi-nginx:python3.11
 
 ENV NGINX_MAX_UPLOAD 1m
 ENV LISTEN_PORT 8080
-ENV UWSGI_INI /myweb/uwsgi.ini
+# ENV UWSGI_INI /app/uwsgi.ini
 
-WORKDIR /myweb
+VOLUME ["/app","/var/www"]
+WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
 RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
@@ -16,5 +17,4 @@ RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
 
 EXPOSE 8080
 
-WORKDIR /myweb/myweb
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
