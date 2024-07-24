@@ -1,7 +1,5 @@
 FROM tiangolo/uwsgi-nginx:python3.11
 
-ENV NGINX_MAX_UPLOAD 1m
-ENV LISTEN_PORT 8080
 ENV UWSGI_INI /app/uwsgi.ini
 
 VOLUME ["/app","/var/www"]
@@ -24,5 +22,5 @@ RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
 # ENTRYPOINT ["/app/start.sh"]
 # CMD ["sh", "-c", "nginx ; uwsgi --ini /app/uwsgi.ini"]
 
-EXPOSE 8080
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+CMD ["sh", "-c", "nginx -g 'daemon off;' ; uwsgi --ini /app/uwsgi.ini"]
