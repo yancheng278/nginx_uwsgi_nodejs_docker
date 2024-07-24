@@ -4,7 +4,6 @@ VOLUME ["/app","/var/www"]
 WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
-COPY ./start.sh /app/start.sh
 
 RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
  && apt-get -y update \ 
@@ -19,3 +18,4 @@ RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
 # ENTRYPOINT nginx -g "daemon on;" && uwsgi --ini uwsgi.ini
 
 # ENTRYPOINT ["/app/start.sh"]
+# CMD ["sh", "-c", "nginx ; uwsgi --ini /app/uwsgi.ini"]
