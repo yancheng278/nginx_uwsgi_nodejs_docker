@@ -25,3 +25,4 @@ RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
 # CMD ["sh", "-c", "nginx ; uwsgi --ini /app/uwsgi.ini"]
 
 EXPOSE 8080
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
