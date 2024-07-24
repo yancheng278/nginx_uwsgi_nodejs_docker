@@ -23,4 +23,8 @@ RUN curl -sSLk https://deb.nodesource.com/setup_current.x | bash - \
 # CMD ["sh", "-c", "nginx ; uwsgi --ini /app/uwsgi.ini"]
 
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
-CMD ["sh", "-c", "nginx -g 'daemon off;' && uwsgi --ini /app/uwsgi.ini"]
+
+COPY ./start.sh /app/start.sh
+
+# CMD ["sh", "-c", "nginx -g 'daemon off;' && uwsgi --ini /app/uwsgi.ini"]
+ENTRYPOINT ["/app/start.sh"]
